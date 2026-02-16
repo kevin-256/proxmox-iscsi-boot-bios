@@ -178,7 +178,7 @@ To make Proxmox boot from mbr with bios you need to first install debian and the
 
 nano /etc/resolv.conf
 setting up network config /etc/network/config
-
+apt remove os-prober
 
 
 ## References
