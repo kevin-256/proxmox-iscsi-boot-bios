@@ -120,9 +120,14 @@ To make Proxmox boot from mbr with bios you need to first install debian and the
 11. Adding the proxmox repostitory and gpg key and updating the apt lists:
     ```bash
     apt install wget -y
-    echo "deb http://download.proxmox.com/debian/pve stretch pve-no-subscription" > /etc/apt/sources.list.d/pve-install-repo.list
-    wget https://enterprise.proxmox.com/debian/proxmox-archive-keyring-trixie.gpg -O /etc/apt/trusted.gpg.d/proxmox-archive-keyring.gpg
+    echo "deb http://download.proxmox.com/debian/pve <debian version name> pve-no-subscription" > /etc/apt/sources.list.d/pve-install-repo.list
+    wget https://enterprise.proxmox.com/debian/proxmox-archive-keyring-<debian version name>.gpg -O /etc/apt/trusted.gpg.d/proxmox-archive-keyring.gpg
     apt update
+    ```
+    Example
+    ```bash
+    echo "deb http://download.proxmox.com/debian/pve trixie pve-no-subscription" > /etc/apt/sources.list.d/pve-install-repo.list
+    wget https://enterprise.proxmox.com/debian/proxmox-archive-keyring-trixie.gpg -O /etc/apt/trusted.gpg.d/proxmox-archive-keyring.gpg
     ```
 13. Finding the correct proxmox kernel:
     ```bash
