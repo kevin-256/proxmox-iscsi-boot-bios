@@ -31,7 +31,15 @@ To make Proxmox boot from mbr with bios you need to first install debian and the
     ```bash
     mkfs.ext4 /dev/sdX1
     ```
-5. Mount della partizione
+5. Installazione sistema di base con debootstrap
+    ```bash
+    debootstrap <debian version name> /mnt http://ftp.us.debian.org/debian
+    ```
+    Example:
+    ```bash
+    debootstrap trixie /mnt http://ftp.us.debian.org/debian
+    ```
+6. Mount della partizione
     ```bash
     mount /dev/sdX1 /mnt
     mount -o bind /dev /mnt/dev
@@ -39,17 +47,9 @@ To make Proxmox boot from mbr with bios you need to first install debian and the
     mount -o bind /proc /mnt/proc
     cp /etc/resolv.conf /mnt/etc/resolv.conf
     ```
-6. Installazione sistema di base con debootstrap
-    ```bash
-    debootstrap <debian version name> /mnt/debian http://ftp.us.debian.org/debian
-    ```
-    Example:
-    ```bash
-    debootstrap trixie /mnt/debian http://ftp.us.debian.org/debian
-    ```
 7. Entering the new created system
     ```bash
-    chroot /mnt/debian
+    chroot /mnt
     ```
 8. Automatically mount root partition at boot
     1. Get partition UUID and copy it:
