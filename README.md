@@ -33,6 +33,7 @@ To make Proxmox boot from mbr with bios you need to first install debian and the
     ```
 5. Installazione sistema di base con debootstrap
     ```bash
+    mount /dev/sdX1 /mnt
     debootstrap <debian version name> /mnt http://ftp.us.debian.org/debian
     ```
     Example:
@@ -41,7 +42,6 @@ To make Proxmox boot from mbr with bios you need to first install debian and the
     ```
 6. Mount della partizione
     ```bash
-    mount /dev/sdX1 /mnt
     mount -o bind /dev /mnt/dev
     mount -o bind /sys /mnt/sys
     mount -o bind /proc /mnt/proc
